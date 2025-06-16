@@ -119,24 +119,26 @@
   body {
     @apply bg-background text-foreground;
   }
+         /* Custom scrollbar */
+         ::-webkit-scrollbar {
+           width: 5px;
+         }
+    
+         ::-webkit-scrollbar-track {
+           @apply bg-[#1a1a1a];
+         }
+    
+         ::-webkit-scrollbar-thumb {
+           @apply bg-[#00d9ff]/50 rounded-full;
+         }
+    
+         ::-webkit-scrollbar-thumb:hover {
+           @apply bg-[#00d9ff]/70;
+         }
 }
 
-/* Custom transparent scrollbar where only the track is visible */
-.scrollbar-transparent-track::-webkit-scrollbar {
-  width: 8px;
+@layer utilities {
+  .dark {
+    @apply bg-[#1a1a1a];
+  }
 }
-
-.scrollbar-transparent-track::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1); /* Visible track (adjust color/opacity) */
-  border-radius: 8px;
-}
-
-.scrollbar-transparent-track::-webkit-scrollbar-thumb {
-  background-color: transparent; /* Make thumb invisible */
-}
-
-.scrollbar-transparent-track {
-  scrollbar-width: thin;
-  scrollbar-color: transparent rgba(255, 255, 255, 0); /* Firefox */
-}
-

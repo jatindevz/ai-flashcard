@@ -28,10 +28,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        
+
         <Toaster />
         {children}
-       
+        <footer className="border-t border-blue-100 py-4 text-center flex justify-around -safe text-xs text-blue-600">
+          <div className="flex justify-center gap-4 flex-wrap">
+            <p> developed by <a href="https://x.com/jatinnvw" className="hover:underline cursor-pointer">Jatin</a></p>
+
+          </div>
+          <p className="">&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );

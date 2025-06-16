@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select";
 import { generatePrompt } from "@/prompts/prompt";
 import { useState } from "react";
+import { Infinity } from 'lucide-react';
 
 
 type InputFieldProps = {
@@ -32,7 +33,7 @@ type InputFieldProps = {
 
 const InputField = ({ FetchQue, isFetching, setIsFetching }: InputFieldProps) => {
   const [difficulty, setDifficulty] = useState<string>("");
-const [cardCount, setCardCount] = useState<string>("10"); // default "10"
+  const [cardCount, setCardCount] = useState<string>("10"); // default "10"
 
   const formSchema = z.object({
     prompt: z.string().min(1, "Please enter a topic").trim(),
@@ -43,12 +44,27 @@ const [cardCount, setCardCount] = useState<string>("10"); // default "10"
     defaultValues: { prompt: "" },
   });
 
+  const [creditCount, setCreditCount] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
 
+  const handleCreditChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCreditCount(event.target.value);
+  };
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
+  const handleValueChange = (value: string) => {
+    if (value === 'buy') {
+      // router.push('/api/buy');
+    } else {
+      setCreditCount(value); // Handle other values normally
+    }
+  };
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsFetching(true);
     try {
-      const prompt = generatePrompt(  { count: cardCount, type: difficulty, text: data.prompt } );
+      const prompt = generatePrompt({ count: cardCount, type: difficulty, text: data.prompt });
       FetchQue(prompt);
     } catch (error) {
       console.error("Error:", error);
@@ -78,7 +94,7 @@ const [cardCount, setCardCount] = useState<string>("10"); // default "10"
               </FormItem>
             )}
           />
-          
+
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Select onValueChange={(e) => setDifficulty(e)}>
@@ -103,24 +119,47 @@ const [cardCount, setCardCount] = useState<string>("10"); // default "10"
                 </SelectContent>
               </Select>
             </div>
+            <div className="flex items-center gap-3 ">
+              <div className="relative inline-block text-left">
+                {/* Trigger */}
+                <div
+                  id="credit"
+                  className="flex items-center gap-1 border border-blue-100 rounded-lg px-2 py-1 cursor-pointer"
+                  onClick={toggleDropdown}
+                >
+                  <p className="text-blue-600 text-xs font-small">Credits: {creditCount}</p>
+                  <Infinity className="w-4 h-4 text-blue-600" />
+                </div>
 
-            <Button
-              type="submit"
-              disabled={isFetching}
-              className="h-10 px-6 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-medium rounded-full hover:from-blue-500 hover:to-teal-500 hover:shadow-md transition-all"
-            >
-              {isFetching ? (
-                <>
-                  <Loader2 className="animate-spin w-4 h-4 mr-2" />
-                  Generating...
-                </>
-              ) : (
-                <>
-                  <Zap className="w-4 h-4 mr-2" />
-                  Generate
-                </>
-              )}
-            </Button>
+                {/* Dropdown */}
+                {/* {isOpen && (
+                  <div className="absolute mt-1 w-40 bg-white border border-blue-100 rounded-lg shadow-md z-10">
+                    <ul className="text-sm text-blue-600">
+                      <li className="px-4 py-2 hover:bg-blue-50  rounded-t-lg cursor-pointer">Buy more credits</li>
+                      <li className="px-4 py-2 hover:bg-blue-50 rounded-b-lg cursor-pointer">View usage</li>
+                    </ul>
+                  </div>
+                )} */}
+              </div>
+              <Button
+                type="submit"
+                disabled={isFetching}
+                className="h-10 px-6 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-medium rounded-full hover:from-blue-500 hover:to-teal-500 hover:shadow-md transition-all"
+              >
+                {isFetching ? (
+                  <>
+                    <Loader2 className="animate-spin w-4 h-4 mr-2" />
+                    Generating...
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-4 h-4 mr-2" />
+                    Generate
+                  </>
+                )}
+              </Button>
+            </div>
+
           </div>
         </form>
       </Form>
