@@ -83,7 +83,7 @@ const DisplayQue = ({ inputData, isFetching }: DisplayQueProps) => {
                         </div>
 
                         <Carousel
-                            className="w-full max-w-4xl mx-auto"
+                            className="w-full "
                         >
                             <CarouselContent className="-ml-2 md:-ml-4">
                                 {flashcards.map((card, index) => (
