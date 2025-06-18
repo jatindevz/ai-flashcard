@@ -1,5 +1,5 @@
 "use client"
-import {  useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import InputField from "@/components/InputField";
 import DisplayQue from "@/components/DisplayQue";
