@@ -1,0 +1,85 @@
+<svg width="160" height="160" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Gradient Definitions -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D8FF" />
+      <stop offset="60%" stop-color="#00B4FF" />
+      <stop offset="100%" stop-color="#0072FF" />
+    </linearGradient>
+    
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#1E1E2F" />
+      <stop offset="100%" stop-color="#0C0C1C" />
+    </radialGradient>
+    
+    <!-- Glow Effect -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0 
+                0 0 0 0 0.7 
+                0 0 0 0 1 
+                0 0 0 1 0" result="glow"/>
+      <feBlend in="SourceGraphic" in2="glow" mode="screen"/>
+    </filter>
+    
+    <!-- 3D Effect -->
+    <filter id="insetShadow">
+      <feOffset dx="2" dy="2"/>
+      <feGaussianBlur stdDeviation="3" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="black" flood-opacity="0.8" result="color"/>
+      <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="100" cy="100" r="100" fill="url(#bgGradient)"/>
+  
+  <!-- 3D Base Effect -->
+  <g filter="url(#insetShadow)">
+    <circle cx="100" cy="100" r="85" fill="transparent" stroke="#1A1A2E" stroke-width="8"/>
+  </g>
+  
+  <!-- Animated Data Points -->
+  <g stroke="#00D8FF" stroke-width="2" opacity="0.7">
+    <circle cx="100" cy="100" r="70" fill="none" stroke-dasharray="5,3">
+      <animate attributeName="r" from="65" to="75" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="100" cy="100" r="50" fill="none" stroke-dasharray="3,2">
+      <animate attributeName="r" from="45" to="55" dur="4s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- W Letter with Animation -->
+  <path d="M50,70 L62,140 L80,95 L98,140 L110,70" fill="none" stroke="url(#mainGradient)" 
+        stroke-width="10" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonGlow)">
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+  </path>
+
+  <!-- D Letter with Animation -->
+  <path d="M130,70 L130,140 C160,130 170,100 130,70" fill="none" stroke="url(#mainGradient)" 
+        stroke-width="10" stroke-linecap="round" filter="url(#neonGlow)">
+    <animate attributeName="opacity" values="1;0.9;1" dur="4s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Floating Particles -->
+  <g fill="#00D8FF" filter="url(#neonGlow)" opacity="0.7">
+    <circle cx="40" cy="50" r="2">
+      <animate attributeName="cy" from="45" to="55" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="160" cy="120" r="3">
+      <animate attributeName="cx" from="155" to="165" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="75" cy="160" r="2.5">
+      <animate attributeName="r" from="2" to="3" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Hover Effect (Activated on parent hover) -->
+  <circle cx="100" cy="100" r="100" fill="transparent">
+    <animate attributeName="opacity" begin="mouseover" from="0" to="1" dur="0.3" fill="freeze" />
+    <animate attributeName="opacity" begin="mouseout" from="1" to="0" dur="0.5" fill="freeze" />
+  </circle>
+</svg>

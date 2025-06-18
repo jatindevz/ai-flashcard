@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ai - Flashcards",
   description: "A smart flashcard app that creates quiz cards from your Topics",
+  icons: {
+    icon: "/icon.svg",
+  }
 };
 
 export default function RootLayout({

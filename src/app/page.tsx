@@ -24,7 +24,6 @@ export default function Home() {
 
   return (
     <div className=" ">
-      
       <Hero />
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         {blobs.map((blob, i) => (
