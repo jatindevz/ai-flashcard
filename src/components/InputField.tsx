@@ -23,6 +23,7 @@ import {
 import { generatePrompt } from "@/prompts/prompt";
 import { useState } from "react";
 import { Infinity } from 'lucide-react';
+import { toast } from "sonner";
 
 
 type InputFieldProps = {
@@ -51,13 +52,14 @@ const InputField = ({ FetchQue, isFetching, setIsFetching }: InputFieldProps) =>
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  // const handleValueChange = (value: string) => {
-  //   if (value === 'buy') {
-  //     // router.push('/api/buy');
-  //   } else {
-  //     setCreditCount(value); // Handle other values normally
-  //   }
-  // };
+  const handleValueChange = (value: string) => {
+    if (value === 'buy') {
+      toast("soon");
+      // router.push('/api/buy');
+    } else {
+      setCreditCount(value); // Handle other values normally
+    }
+  };
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsFetching(true);
@@ -130,14 +132,13 @@ const InputField = ({ FetchQue, isFetching, setIsFetching }: InputFieldProps) =>
                 </div>
 
                 {/* Dropdown */}
-                {/* {isOpen && (
+                {isOpen && (
                   <div className="absolute mt-1 w-40 bg-white border border-blue-100 rounded-lg shadow-md z-10">
-                    <ul className="text-sm text-blue-600">
-                      <li className="px-4 py-2 hover:bg-blue-50  rounded-t-lg cursor-pointer">Buy more credits</li>
-                      <li className="px-4 py-2 hover:bg-blue-50 rounded-b-lg cursor-pointer">View usage</li>
+                    <ul className="text-xs text-blue-600">
+                      <li className="px-2 py-1 hover:bg-blue-50 rounded-lg cursor-pointer" onClick={() => handleValueChange('buy')}>Buy more credits</li>
                     </ul>
                   </div>
-                )} */}
+                )}
               </div>
               <Button
                 type="submit"
