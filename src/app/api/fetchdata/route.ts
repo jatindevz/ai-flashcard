@@ -2,10 +2,6 @@
 
 import { NextResponse } from "next/server";
 
-interface Flashcard {
-    Q: string;
-    A: string;
-}
 
 export async function POST(request: Request) {
     const {prompt } = await request.json()

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { motion } from "framer-motion";
 import InputField from "@/components/InputField";
 import DisplayQue from "@/components/DisplayQue";
@@ -9,11 +9,8 @@ import { toast } from 'sonner';
 
 
 export default function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [inputData, setInputData] = useState<string>("");
   const [isFetching, setIsFetching] = useState(false);
-
-
 
 
   const FetchQue = async (data: string) => {
@@ -29,6 +26,7 @@ export default function Hero() {
         }
       });
     } catch (error) {
+      console.error("Error:", error);
       toast.error("Failed to generate flashcards. Please try again.", {
         style: {
           background: '#fff',

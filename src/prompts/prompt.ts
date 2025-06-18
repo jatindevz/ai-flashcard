@@ -46,20 +46,20 @@
 
 // export const BasicPrompt = "Generate flashcards in the form of question and answer pairs based on the following content: [USER_INPUT_TEXT] Each flashcard should test a key concept, fact, or definition. Output 10 flashcards in the format: Q: [Question]A: [Answer]"
 
-export const BasicPrompts = `
-You are an AI assistant that generates flashcards based on any input provided by the user. 
-Create 10 question-and-answer flashcards from the following input: [USER_INPUT_TEXT]
-The flashcards should help with learning or reviewing the key ideas, facts, definitions, or concepts found in the input. 
-Use clear and concise language. Structure the output like this:
-Each Question and Answer should be separated by '||'
+// export const BasicPrompts = `
+// You are an AI assistant that generates flashcards based on any input provided by the user. 
+// Create 10 question-and-answer flashcards from the following input: [USER_INPUT_TEXT]
+// The flashcards should help with learning or reviewing the key ideas, facts, definitions, or concepts found in the input. 
+// Use clear and concise language. Structure the output like this:
+// Each Question and Answer should be separated by '||'
 
-Question: [Question]
-Answer: [Answer]
+// Question: [Question]
+// Answer: [Answer]
 
-If the input is a topic or title, infer relevant subtopics and generate helpful flashcards accordingly.
-`;
+// If the input is a topic or title, infer relevant subtopics and generate helpful flashcards accordingly.
+// `;
 
-"Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll. This process primarily occurs in the chloroplasts of plant cells. Carbon dioxide and water are converted into glucose and oxygen using sunlight. The overall equation for photosynthesis is: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂"
+// "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll. This process primarily occurs in the chloroplasts of plant cells. Carbon dioxide and water are converted into glucose and oxygen using sunlight. The overall equation for photosynthesis is: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂"
 
 
 interface Flashcard {

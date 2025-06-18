@@ -47,19 +47,17 @@ const InputField = ({ FetchQue, isFetching, setIsFetching }: InputFieldProps) =>
   const [creditCount, setCreditCount] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleCreditChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCreditCount(event.target.value);
-  };
+
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
-  const handleValueChange = (value: string) => {
-    if (value === 'buy') {
-      // router.push('/api/buy');
-    } else {
-      setCreditCount(value); // Handle other values normally
-    }
-  };
+  // const handleValueChange = (value: string) => {
+  //   if (value === 'buy') {
+  //     // router.push('/api/buy');
+  //   } else {
+  //     setCreditCount(value); // Handle other values normally
+  //   }
+  // };
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsFetching(true);
