@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { TextShimmer } from '@/components/ui/text-shimmer';
 import {
     Carousel,
     CarouselContent,
@@ -163,10 +164,15 @@ const DisplayQue = ({ inputData, isFetching }: DisplayQueProps) => {
                     </div>
                 ) : isFetching ? (
                     <div className="text-center py-16">
-                        <div className="inline-flex items-center gap-3 text-blue-600">
+                        {/* <div className="inline-flex items-center gap-3 text-blue-600">
                             <Loader2 className="w-5 h-5 animate-spin" />
                             <span className="text-lg">Generating your flashcards...</span>
-                        </div>
+                        </div> */}
+                            <TextShimmer
+                                className='text-xl font-medium [--base-color:theme(colors.blue.600)] [--base-gradient-color:theme(colors.blue.200)] dark:[--base-color:theme(colors.blue.700)] dark:[--base-gradient-color:theme(colors.blue.400)]'
+                                duration={1.2}>
+                                Generating your ...
+                            </TextShimmer>
                         <p className="text-gray-500 mt-2 text-sm">This usually takes 10-20 seconds</p>
                     </div>
                 ) : (
